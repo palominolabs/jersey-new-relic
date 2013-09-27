@@ -1,17 +1,18 @@
-package com.palominolabs.newrelic.jersey;
+package com.palominolabs.jersey.newrelic;
 
-import com.palominolabs.newrelic.NewRelicWrapper;
+import com.newrelic.api.agent.NewRelic;
 
 import javax.annotation.Nullable;
 
 final class RealNewRelicWrapper implements NewRelicWrapper {
+
     @Override
     public void noticeError(Throwable t) {
-        // TODO
+        NewRelic.noticeError(t);
     }
 
     @Override
     public void setTransactionName(@Nullable String category, String transactionName) {
-        // TODO
+        NewRelic.setTransactionName(category, transactionName);
     }
 }

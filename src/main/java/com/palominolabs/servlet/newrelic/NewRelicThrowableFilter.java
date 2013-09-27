@@ -1,10 +1,10 @@
-package com.palominolabs.newrelic.servlet;
+package com.palominolabs.servlet.newrelic;
 
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
-import com.palominolabs.newrelic.NewRelicWrapper;
+import com.palominolabs.jersey.newrelic.NewRelicWrapper;
 
-import javax.annotation.concurrent.Immutable;
+import javax.annotation.concurrent.ThreadSafe;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
@@ -17,7 +17,7 @@ import java.io.IOException;
  * Informs New Relic about throwables that propagate up through the servlet layers (instead of, for instance, being
  * handled by Jersey).
  */
-@Immutable
+@ThreadSafe
 @Singleton
 public final class NewRelicThrowableFilter implements Filter {
 

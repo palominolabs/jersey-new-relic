@@ -1,4 +1,4 @@
-package com.palominolabs.newrelic;
+package com.palominolabs.jersey.newrelic;
 
 import javax.annotation.Nullable;
 import javax.annotation.concurrent.ThreadSafe;

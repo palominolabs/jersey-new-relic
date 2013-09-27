@@ -1,19 +1,18 @@
-package com.palominolabs.newrelic.jersey;
+package com.palominolabs.jersey.newrelic;
 
-import com.palominolabs.newrelic.NewRelicWrapper;
 import com.sun.jersey.spi.container.ContainerRequest;
 import com.sun.jersey.spi.container.ContainerRequestFilter;
 import com.sun.jersey.spi.container.ContainerResponse;
 import com.sun.jersey.spi.container.ContainerResponseFilter;
 import com.sun.jersey.spi.container.ResourceFilter;
 
-import javax.annotation.concurrent.Immutable;
+import javax.annotation.concurrent.ThreadSafe;
 
 /**
  * Informs New Relic about mapped throwables that are being handled by Jersey rather than propagated up the servlet
  * handling chain.
  */
-@Immutable
+@ThreadSafe
 final class NewRelicMappedThrowableResourceFilter implements ResourceFilter, ContainerResponseFilter {
 
     private final NewRelicWrapper newRelicWrapper;

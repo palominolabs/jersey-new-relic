@@ -1,19 +1,18 @@
-package com.palominolabs.newrelic.jersey;
+package com.palominolabs.jersey.newrelic;
 
-import com.palominolabs.newrelic.NewRelicWrapper;
 import com.sun.jersey.spi.container.ContainerRequest;
 import com.sun.jersey.spi.container.ContainerRequestFilter;
 import com.sun.jersey.spi.container.ContainerResponseFilter;
 import com.sun.jersey.spi.container.ResourceFilter;
 
 import javax.annotation.Nullable;
-import javax.annotation.concurrent.Immutable;
+import javax.annotation.concurrent.ThreadSafe;
 
 /**
  * Uses the name provided by {@link NewRelicResourceFilterFactory} to assign the New Relic transaction name for the
  * active request.
  */
-@Immutable
+@ThreadSafe
 final class NewRelicTransactionNameResourceFilter implements ResourceFilter, ContainerRequestFilter {
 
     private final NewRelicWrapper newRelicWrapper;

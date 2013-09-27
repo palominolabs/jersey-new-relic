@@ -1,4 +1,4 @@
-package com.palominolabs.newrelic.jersey;
+package com.palominolabs.jersey.newrelic;
 
 import com.google.common.annotations.VisibleForTesting;
 import com.sun.jersey.api.model.AbstractResourceMethod;

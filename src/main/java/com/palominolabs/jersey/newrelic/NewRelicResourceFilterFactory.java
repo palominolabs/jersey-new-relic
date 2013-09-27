@@ -1,11 +1,10 @@
-package com.palominolabs.newrelic.jersey;
+package com.palominolabs.jersey.newrelic;
 /*
 * Copyright (c) 2012 Palomino Labs, Inc.
 */
 
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
-import com.palominolabs.newrelic.NewRelicWrapper;
 import com.sun.jersey.api.model.AbstractMethod;
 import com.sun.jersey.api.model.AbstractResourceMethod;
 import com.sun.jersey.api.model.AbstractSubResourceLocator;

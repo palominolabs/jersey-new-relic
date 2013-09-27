@@ -1,4 +1,4 @@
-package com.palominolabs.newrelic.jersey;
+package com.palominolabs.jersey.newrelic;
 
 import com.sun.jersey.api.model.AbstractResource;
 import com.sun.jersey.api.model.AbstractResourceMethod;
@@ -10,7 +10,7 @@ import org.junit.Test;
 import javax.ws.rs.Path;
 import java.lang.annotation.Annotation;
 
-import static com.palominolabs.newrelic.jersey.ResourceTransactionNamerImpl.getPathWithoutSurroundingSlashes;
+import static com.palominolabs.jersey.newrelic.ResourceTransactionNamerImpl.getPathWithoutSurroundingSlashes;
 import static org.junit.Assert.assertEquals;
 
 public final class ResourceTransactionNamerImplTest {

@@ -1,4 +1,4 @@
-package com.palominolabs.newrelic.jersey;
+package com.palominolabs.jersey.newrelic;
 
 import com.google.inject.AbstractModule;
 import com.google.inject.Guice;
@@ -10,8 +10,7 @@ import com.google.inject.util.Modules;
 import com.ning.http.client.AsyncHttpClient;
 import com.ning.http.client.Response;
 import com.palominolabs.config.ConfigModuleBuilder;
-import com.palominolabs.newrelic.NewRelicWrapper;
-import com.palominolabs.newrelic.servlet.NewRelicThrowableFilter;
+import com.palominolabs.servlet.newrelic.NewRelicThrowableFilter;
 import com.sun.jersey.api.core.ResourceConfig;
 import com.sun.jersey.guice.JerseyServletModule;
 import com.sun.jersey.guice.spi.container.servlet.GuiceContainer;

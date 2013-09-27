@@ -1,7 +1,6 @@
-package com.palominolabs.newrelic.jersey;
+package com.palominolabs.jersey.newrelic;
 
 import com.google.inject.AbstractModule;
-import com.palominolabs.newrelic.NewRelicWrapper;
 
 public final class JerseyNewRelicModule extends AbstractModule {
     @Override
