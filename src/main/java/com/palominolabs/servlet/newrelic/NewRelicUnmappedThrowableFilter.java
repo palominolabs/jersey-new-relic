@@ -19,12 +19,12 @@ import java.io.IOException;
  */
 @ThreadSafe
 @Singleton
-public final class NewRelicThrowableFilter implements Filter {
+public final class NewRelicUnmappedThrowableFilter implements Filter {
 
     private final NewRelicWrapper newRelicWrapper;
 
     @Inject
-    NewRelicThrowableFilter(NewRelicWrapper newRelicWrapper) {
+    NewRelicUnmappedThrowableFilter(NewRelicWrapper newRelicWrapper) {
         this.newRelicWrapper = newRelicWrapper;
     }
 

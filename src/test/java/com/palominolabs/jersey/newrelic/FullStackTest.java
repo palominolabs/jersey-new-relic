@@ -10,7 +10,7 @@ import com.google.inject.util.Modules;
 import com.ning.http.client.AsyncHttpClient;
 import com.ning.http.client.Response;
 import com.palominolabs.config.ConfigModuleBuilder;
-import com.palominolabs.servlet.newrelic.NewRelicThrowableFilter;
+import com.palominolabs.servlet.newrelic.NewRelicUnmappedThrowableFilter;
 import com.sun.jersey.api.core.ResourceConfig;
 import com.sun.jersey.guice.JerseyServletModule;
 import com.sun.jersey.guice.spi.container.servlet.GuiceContainer;
@@ -148,9 +148,9 @@ public class FullStackTest {
                     @Override
                     protected void configureServlets() {
                         bind(GuiceContainer.class);
-                        bind(NewRelicThrowableFilter.class);
+                        bind(NewRelicUnmappedThrowableFilter.class);
                         serve("/*").with(GuiceContainer.class, initParams);
-                        filter("/*").through(NewRelicThrowableFilter.class);
+                        filter("/*").through(NewRelicUnmappedThrowableFilter.class);
                     }
                 });
                 install(new JerseyServletModule());
