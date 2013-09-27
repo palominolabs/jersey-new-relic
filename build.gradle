@@ -22,7 +22,6 @@ dependencies {
   compile "com.palominolabs.config:config-inject:1.0.0"
   compile "com.sun.jersey:jersey-core:$depVersions.jersey"
   compile "com.sun.jersey:jersey-server:$depVersions.jersey"
-  compile 'com.yammer.metrics:metrics-core:2.2.0'
 
   compile 'com.newrelic.agent.java:newrelic-api:2.21.4'
 
@@ -30,11 +29,22 @@ dependencies {
 
   compile 'com.google.code.findbugs:jsr305:2.0.1'
 
-  compile 'javax.servlet:servlet-api:2.5'
+  // use jetty's servlet-api package
+  compile 'org.eclipse.jetty.orbit:javax.servlet:3.0.0.v201112011016'
 
   compile "org.slf4j:slf4j-api:$depVersions.slf4j"
+  testRuntime "org.slf4j:slf4j-simple:$depVersions.slf4j"
+  testRuntime "org.slf4j:log4j-over-slf4j:$depVersions.slf4j"
+  testRuntime "org.slf4j:jcl-over-slf4j:$depVersions.slf4j"
+  testCompile "org.slf4j:jul-to-slf4j:$depVersions.slf4j"
 
   testCompile 'junit:junit:4.11'
+
+  testCompile "org.eclipse.jetty:jetty-servlet:$depVersions.jetty"
+  testCompile "com.sun.jersey.contribs:jersey-guice:$depVersions.jersey"
+  testCompile "com.sun.jersey:jersey-servlet:$depVersions.jersey"
+
+  testCompile 'com.ning:async-http-client:1.7.19'
 }
 
 repositories {

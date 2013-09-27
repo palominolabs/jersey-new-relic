@@ -1,7 +1,8 @@
 package com.palominolabs.newrelic.servlet;
 
+import com.google.inject.Inject;
 import com.google.inject.Singleton;
-import com.newrelic.api.agent.NewRelic;
+import com.palominolabs.newrelic.NewRelicWrapper;
 
 import javax.annotation.concurrent.Immutable;
 import javax.servlet.Filter;
@@ -19,6 +20,14 @@ import java.io.IOException;
 @Immutable
 @Singleton
 public final class NewRelicThrowableFilter implements Filter {
+
+    private final NewRelicWrapper newRelicWrapper;
+
+    @Inject
+    NewRelicThrowableFilter(NewRelicWrapper newRelicWrapper) {
+        this.newRelicWrapper = newRelicWrapper;
+    }
+
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
         // no op
@@ -31,7 +40,7 @@ public final class NewRelicThrowableFilter implements Filter {
         try {
             filterChain.doFilter(servletRequest, servletResponse);
         } catch (Throwable t) {
-            NewRelic.noticeError(t);
+            newRelicWrapper.noticeError(t);
             throw t;
         }
     }

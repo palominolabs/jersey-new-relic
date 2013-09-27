@@ -1,11 +1,12 @@
 package com.palominolabs.newrelic.jersey;
 
-import com.newrelic.api.agent.NewRelic;
+import com.palominolabs.newrelic.NewRelicWrapper;
 import com.sun.jersey.spi.container.ContainerRequest;
 import com.sun.jersey.spi.container.ContainerRequestFilter;
 import com.sun.jersey.spi.container.ContainerResponseFilter;
 import com.sun.jersey.spi.container.ResourceFilter;
 
+import javax.annotation.Nullable;
 import javax.annotation.concurrent.Immutable;
 
 /**
@@ -15,12 +16,19 @@ import javax.annotation.concurrent.Immutable;
 @Immutable
 final class NewRelicTransactionNameResourceFilter implements ResourceFilter, ContainerRequestFilter {
 
+    private final NewRelicWrapper newRelicWrapper;
     private final String transactionName;
+    private final String category;
 
     /**
+     * @param newRelicWrapper wrapper
+     * @param category        new relic category
      * @param transactionName the transaction name that this filter will apply to all requests.
      */
-    NewRelicTransactionNameResourceFilter(String transactionName) {
+    NewRelicTransactionNameResourceFilter(NewRelicWrapper newRelicWrapper, @Nullable String category,
+        String transactionName) {
+        this.newRelicWrapper = newRelicWrapper;
+        this.category = category;
         this.transactionName = transactionName;
     }
 
@@ -37,8 +45,7 @@ final class NewRelicTransactionNameResourceFilter implements ResourceFilter, Con
 
     @Override
     public ContainerRequest filter(ContainerRequest request) {
-        // TODO
-        NewRelic.setTransactionName("some category", this.transactionName);
+        newRelicWrapper.setTransactionName(category, this.transactionName);
         return request;
     }
 }

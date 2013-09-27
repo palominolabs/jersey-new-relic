@@ -1,6 +1,6 @@
 package com.palominolabs.newrelic.jersey;
 
-import com.newrelic.api.agent.NewRelic;
+import com.palominolabs.newrelic.NewRelicWrapper;
 import com.sun.jersey.spi.container.ContainerRequest;
 import com.sun.jersey.spi.container.ContainerRequestFilter;
 import com.sun.jersey.spi.container.ContainerResponse;
@@ -15,6 +15,12 @@ import javax.annotation.concurrent.Immutable;
  */
 @Immutable
 final class NewRelicMappedThrowableResourceFilter implements ResourceFilter, ContainerResponseFilter {
+
+    private final NewRelicWrapper newRelicWrapper;
+
+    NewRelicMappedThrowableResourceFilter(NewRelicWrapper newRelicWrapper) {
+        this.newRelicWrapper = newRelicWrapper;
+    }
 
     @Override
     public ContainerRequestFilter getRequestFilter() {
@@ -31,7 +37,7 @@ final class NewRelicMappedThrowableResourceFilter implements ResourceFilter, Con
     public ContainerResponse filter(ContainerRequest request, ContainerResponse response) {
         Throwable mappedThrowable = response.getMappedThrowable();
         if (mappedThrowable != null) {
-            NewRelic.noticeError(mappedThrowable);
+            newRelicWrapper.noticeError(mappedThrowable);
         }
         return response;
     }
